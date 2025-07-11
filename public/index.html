@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Cam</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/socket.io/socket.io.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Cam | Reunião</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 text-gray-900 p-6">
 
-  <div class="max-w-4xl mx-auto space-y-6">
-    <h1 class="text-4xl font-bold text-center text-violet-700">🎥 Free Cam</h1>
-    <h2 id="roomNameDisplay" class="text-center text-lg text-gray-600"></h2>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen antialiased">
 
-    <!-- Formulário de entrada -->
-    <div id="roomForm" class="flex gap-2 flex-wrap justify-center">
-      <button id="createRoomBtn" class="bg-green-600 text-white px-4 py-2 rounded">
-        Criar Sala
-      </button>
-      <input id="roomInput" type="text" placeholder="Código da sala"
-             class="border rounded px-4 py-2">
-      <button id="joinBtn" class="bg-violet-600 text-white px-4 py-2 rounded">
-        Entrar na Sala
-      </button>
+    <div class="w-full max-w-6xl mx-auto p-4 h-screen flex flex-col">
+        <header class="text-center py-4">
+            <h1 class="text-4xl font-bold text-white">🎥 Free Cam</h1>
+        </header>
+
+        <main id="roomForm" class="flex-grow flex items-center justify-center">
+            <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-md text-center">
+                <p class="text-gray-300 mb-6">Crie ou entre em uma sala para começar.</p>
+                <div class="flex flex-col gap-4">
+                    <button id="createRoomBtn" class="btn btn-primary">
+                        Criar Nova Sala
+                    </button>
+                    <div class="flex items-center gap-2">
+                        <input id="roomInput" type="text" placeholder="Digite o código da sala">
+                        <button id="joinBtn" class="btn btn-secondary">
+                            Entrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <div class="flex-grow flex flex-col min-h-0">
+             <div id="video-grid">
+                </div>
+        </div>
+
+        <footer id="controls" class="hidden p-4 flex flex-col items-center gap-3">
+            <h2 id="roomNameDisplay" class="text-gray-400 text-sm"></h2>
+            <div class="flex items-center gap-4">
+                <button id="toggleMicBtn" class="btn-control bg-gray-700">🎙️ Microfone</button>
+                <button id="toggleCamBtn" class="btn-control bg-gray-700">📷 Câmera</button>
+                <button id="leaveBtn" class="btn-control bg-red-600">🚪 Sair da Sala</button>
+            </div>
+        </footer>
     </div>
-
-    <!-- Grid de vídeo -->
-    <div id="video-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <!-- vídeos aparecerão aqui -->
-    </div>
-
-    <!-- Controles -->
-    <div id="controls" class="flex justify-center gap-4 mt-6 hidden">
-      <button id="toggleMicBtn" class="bg-blue-500 text-white px-4 py-2 rounded">
-        🎙️ Microfone
-      </button>
-      <button id="toggleCamBtn" class="bg-blue-500 text-white px-4 py-2 rounded">
-        📷 Câmera
-      </button>
-      <button id="leaveBtn" class="bg-red-500 text-white px-4 py-2 rounded">
-        🚪 Sair da Sala
-      </button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

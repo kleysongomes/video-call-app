@@ -1,0 +1,155 @@
+/* =================================
+   Configurações Globais e Fontes
+   ================================= */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, .btn {
+    font-family: 'Google Sans', sans-serif;
+}
+
+/* Garante que o container da aplicação ocupe a tela */
+#app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* =================================
+   Estilos do Formulário (Lobby)
+   ================================= */
+#roomForm input[type="text"] {
+    width: 100%;
+    background-color: #374151; /* gray-700 */
+    color: white;
+    border: 2px solid #4b5563; /* gray-600 */
+    border-radius: 0.75rem; /* rounded-xl */
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+#roomForm input[type="text"]::placeholder {
+    color: #9ca3af; /* gray-400 */
+}
+
+#roomForm input[type="text"]:focus {
+    outline: none;
+    border-color: #3b82f6; /* blue-500 */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+}
+
+/* =================================
+   Estilos de Botões
+   ================================= */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #2563eb; /* blue-600 */
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #1d4ed8; /* blue-700 */
+}
+
+.btn-secondary {
+    background-color: #4b5563; /* gray-600 */
+    color: white;
+    white-space: nowrap; /* Impede que o texto quebre */
+}
+.btn-secondary:hover {
+    background-color: #374151; /* gray-700 */
+}
+
+.btn-control {
+    padding: 0.65rem 1.25rem;
+    border-radius: 9999px; /* rounded-full */
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+    transition: all 0.2s ease-in-out;
+    border: none;
+}
+.btn-control:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* =================================
+   Grid de Vídeos
+   ================================= */
+#video-grid {
+    flex-grow: 1;
+    display: grid;
+    /* Adapta as colunas com base no espaço disponível, criando no mínimo 300px por vídeo */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    overflow-y: auto; /* Permite rolar se houver muitos vídeos */
+    align-content: center; /* Centraliza o conteúdo da grade quando há poucos itens */
+}
+
+/* Estilo para CADA vídeo adicionado pelo script */
+#video-grid video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preenche o espaço sem distorcer, cortando o excesso */
+    border-radius: 0.75rem; /* rounded-xl */
+    background-color: #1f2937; /* gray-800 */
+    /* Espelha o vídeo para uma visualização natural (padrão em apps de chamada) */
+    transform: scaleX(-1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ==================================================
+   ===> LAYOUT PARA DISPOSITIVOS MÓVEIS (NOVO) <===
+   ================================================== */
+
+/* Estilos aplicados em telas com largura máxima de 768px */
+@media (max-width: 768px) {
+    
+    /* Ajusta o título principal */
+    h1 {
+        font-size: 2.25rem; /* text-3xl */
+    }
+
+    /* Reduz o padding do card de entrada */
+    #roomForm > div {
+        padding: 1.5rem; /* p-6 */
+    }
+
+    /* Empilha o campo de input e o botão "Entrar" */
+    #roomForm .flex.items-center {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Otimiza o grid de vídeo para telas menores */
+    #video-grid {
+        padding: 0.5rem;
+        gap: 0.5rem;
+        /* Em telas pequenas, garante que cada vídeo tenha no mínimo 150px de largura */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    /* Ajusta os botões de controle da chamada */
+    .btn-control {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* Reduz o espaçamento entre os botões de controle */
+    #controls > div {
+        gap: 0.5rem; /* 8px */
+    }
+}
