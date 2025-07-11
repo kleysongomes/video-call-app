@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Cam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 p-6">
+
+  <div class="max-w-4xl mx-auto space-y-6">
+    <h1 class="text-4xl font-bold text-center text-violet-700">🎥 Free Cam</h1>
+    <h2 id="roomNameDisplay" class="text-center text-lg text-gray-600"></h2>
+
+    <!-- Formulário de entrada -->
+    <div id="roomForm" class="flex gap-2 flex-wrap justify-center">
+      <button id="createRoomBtn" class="bg-green-600 text-white px-4 py-2 rounded">
+        Criar Sala
+      </button>
+      <input id="roomInput" type="text" placeholder="Código da sala"
+             class="border rounded px-4 py-2">
+      <button id="joinBtn" class="bg-violet-600 text-white px-4 py-2 rounded">
+        Entrar na Sala
+      </button>
+    </div>
+
+    <!-- Grid de vídeo -->
+    <div id="video-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <!-- vídeos aparecerão aqui -->
+    </div>
+
+    <!-- Controles -->
+    <div id="controls" class="flex justify-center gap-4 mt-6 hidden">
+      <button id="toggleMicBtn" class="bg-blue-500 text-white px-4 py-2 rounded">
+        🎙️ Microfone
+      </button>
+      <button id="toggleCamBtn" class="bg-blue-500 text-white px-4 py-2 rounded">
+        📷 Câmera
+      </button>
+      <button id="leaveBtn" class="bg-red-500 text-white px-4 py-2 rounded">
+        🚪 Sair da Sala
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
